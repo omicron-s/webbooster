@@ -6,7 +6,8 @@ const glob = import.meta.glob(`@/assets/img/benefits/*.svg`)
 const benefitsList = [];
 
 Object.entries(glob).forEach((path) => {
-  const img = new URL(path[0], import.meta.url).pathname
+  const img = new URL(path[0], import.meta.url).href
+
   console.log(img)
   let title = 'Заголовка не нашлось';
   let text = 'Текста не нашлось';
