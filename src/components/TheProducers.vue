@@ -12,12 +12,7 @@ const modules = [Keyboard, Autoplay]
 const wrongButtons = ref(false);
 
 const glob = import.meta.glob(['@/assets/img/producers/*.{jpg,png,webp}', '!@/assets/img/producers/bg*.{jpg,png,webp}'], {eager: true})
-// const sponsorList = Object.entries(glob).map(path => ({src: path[0], title: path[0].split('/').pop().split(".")[0]}));
-
-const sponsorList = [{
-  src: './src/assets/img/producers/aier.png',
-  title: 'aier'
-}]
+const sponsorList = Object.entries(glob).map(path => ({src: path[0], title: path[0].split('/').pop().split(".")[0]}));
 
 const swiperInstance = ref()
 const onSwiper = (swiper) => swiperInstance.value = swiper
