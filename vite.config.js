@@ -11,9 +11,7 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "/webbooster/src"),
-      // '@': fileURLToPath(new URL('./src', import.meta.url)),
-      // find: '@', replacement: fileURLToPath(new URL('./src', import.meta.url))
+      "@": path.resolve(__dirname, "/webbooster"),
     }
   }
 })
