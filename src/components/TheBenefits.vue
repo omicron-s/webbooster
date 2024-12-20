@@ -1,12 +1,13 @@
 <script setup>
 import TheSection from "@/components/TheSection.vue";
+import {BASE_URL} from "@/constants.js";
 
-const glob = import.meta.glob('@/assets/img/benefits/*.svg', {eager: true})
+const glob = import.meta.glob(`@/assets/img/benefits/*.svg`, )
 
 const benefitsList = [];
 
 Object.entries(glob).forEach((path) => {
-  const img = path[0];
+  const img =  path[0];
   let title = 'Заголовка не нашлось';
   let text = 'Текста не нашлось';
   let i = 0;
@@ -68,7 +69,7 @@ Object.entries(glob).forEach((path) => {
   <template v-slot:content>
     <ul class="benefits__list">
       <li v-for="(item,i) in benefitsList" :key="i" class="benefits__item">
-        <div :style="`--icon:url(${item.img})`" class="benefits__item-img"></div>
+        <div :style="`--icon:url(${BASE_URL}${item.img})`" class="benefits__item-img"></div>
         <b class="benefits__item-title">{{ item.title }}</b>
         <p class="benefits__item-text">{{ item.text }}</p>
       </li>
