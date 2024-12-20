@@ -1,0 +1,19 @@
+@mixin font-face($font, $weight, $style) {
+  @font-face {
+    font-family: "Futura";
+    src: url('@/assets/fonts/#{$font}.woff') format('woff');
+    font-weight: $weight;
+    font-style: $style;
+  }
+}
+
+@mixin add-font($font, $weight) {
+  @include font-face($font, $weight, normal);
+  @include font-face('#{$font}-Italic',$weight, italic);
+}
+
+@include add-font('FuturaLightC', 300);
+@include add-font('FuturaBookC', 400);
+@include add-font('FuturaMediumC', 500);
+@include add-font('FuturaDemiC', 600);
+@include add-font('FuturaBoldC', 900);

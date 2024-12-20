@@ -1,0 +1,16 @@
+$header-tablet: 940px;
+$header-tablet-min: $header-tablet + 1px;
+$header-mobile: 768px;
+$header-mobile-min: $header-mobile + 1px;
+$header-sm: 640px;
+$header-sm-min: $header-sm + 1px;
+
+:root {
+  --container-padding: clamp(1rem, 1rem + 5vw, 1.5rem);
+  --c-white: #fff;
+  --c-dark: #333;
+  --c-primary: #07086C;
+  --c-additional: #969AF7;
+}
+
+
