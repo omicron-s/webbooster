@@ -2,12 +2,12 @@
 import TheSection from "@/components/TheSection.vue";
 import {BASE_URL} from "@/constants.js";
 
-const glob = import.meta.glob(`@/assets/img/benefits/*.svg`, )
+const glob = import.meta.glob(`@/assets/img/benefits/*.svg`,)
 
 const benefitsList = [];
 
 Object.entries(glob).forEach((path) => {
-  const img =  path[0];
+  const img = path[0];
   let title = 'Заголовка не нашлось';
   let text = 'Текста не нашлось';
   let i = 0;
