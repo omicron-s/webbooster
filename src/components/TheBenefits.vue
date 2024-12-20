@@ -1,20 +1,18 @@
 <script setup>
 import TheSection from "@/components/TheSection.vue";
 
-const glob = import.meta.glob(`@/assets/img/benefits/*.svg`,{import: 'default', eager: true})
-const base = import.meta.env.BASE_URL
-console.log(base)
+const glob = import.meta.glob(`@/assets/img/benefits/*.svg`,{eager: true})
 
 const benefitsList = [];
 
-Object.entries(glob).forEach((path) => {
-  const img = new URL(base + path[0], import.meta.url).href
-  console.log(path,img)
+Object.entries(glob).forEach((image) => {
+  const img = new URL(image[0], import.meta.url);
+  console.log(img)
   let title = 'Заголовка не нашлось';
   let text = 'Текста не нашлось';
   let i = 0;
 
-  const icon = path[0].split('/').pop().replace('.svg', '');
+  const icon = image[0].split('/').pop().replace('.svg', '');
 
   if (icon === 'quality') {
     title = 'Качественная продукция';
@@ -58,6 +56,8 @@ Object.entries(glob).forEach((path) => {
     text: text
   }
 })
+
+console.log(benefitsList)
 
 </script>
 
