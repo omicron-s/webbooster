@@ -6,7 +6,6 @@ import {Autoplay, Keyboard} from "swiper/modules";
 import 'swiper/css';
 import 'swiper/css/autoplay';
 import 'swiper/css/keyboard';
-import {BASE_URL} from "../constants.js";
 
 const modules = [Keyboard, Autoplay]
 
@@ -36,7 +35,7 @@ const slideNext = () => swiperInstance.value.slideNext()
               class="swiper"
               @swiper="onSwiper">
         <swiper-slide v-for="(item,i) in sponsorList" :key="i" class="swiper__slide">
-          <img :alt="`Производитель: ${item.title}`" :src="BASE_URL + item.src">
+          <img :alt="`Производитель: ${item.title}`" :src="item.src">
         </swiper-slide>
       </swiper>
       <button class="swiper__button _next" @click="slideNext" aria-label="Свайпнуть вперед"></button>
