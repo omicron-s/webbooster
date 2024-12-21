@@ -1,13 +1,12 @@
 <script setup>
 import TheSection from "@/components/TheSection.vue";
 
-const glob = import.meta.glob(`@/assets/img/benefits/*.svg`,{eager: true})
+const glob = import.meta.glob(`@/assets/img/benefits/*.svg`,{import: 'default',eager: true})
 
 const benefitsList = [];
 
 Object.entries(glob).forEach((image) => {
-  const img = new URL(image[0], import.meta.url).pathname;
-  console.log(img,new URL(image[0], import.meta.url))
+  const img = image[1];
   let title = 'Заголовка не нашлось';
   let text = 'Текста не нашлось';
   let i = 0;
@@ -71,7 +70,9 @@ console.log(benefitsList)
   <template v-slot:content>
     <ul class="benefits__list">
       <li v-for="(item,i) in benefitsList" :key="i" class="benefits__item">
-        <div :style="`--icon:url(${item.img})`" class="benefits__item-img"></div>
+        <div class="benefits__item-img">
+          <img :src="item.img" alt="">
+        </div>
         <b class="benefits__item-title">{{ item.title }}</b>
         <p class="benefits__item-text">{{ item.text }}</p>
       </li>
@@ -94,7 +95,6 @@ console.log(benefitsList)
     @supports not (grid-template-rows: subgrid) {
       grid-auto-rows: 1fr;
     }
-
 
     @media screen and (max-width: v.$header-tablet) {
       grid-template-columns: repeat(auto-fit, minmax(26rem, 1fr));
@@ -155,13 +155,17 @@ console.log(benefitsList)
         margin: 2rem auto 4rem;
       }
 
-      &:before {
+      img {
         width: 50%;
+        object-fit: contain;
         content: '';
-        background: var(--c-white);
+        filter: brightness(0) invert(1);
+
+        // тут случилась проблема с vue vite и github pages...
+        /*background: var(--c-white);
         --mask: var(--icon) no-repeat center / contain;
         -webkit-mask: var(--mask);
-        mask: var(--mask);
+        mask: var(--mask);*/
         aspect-ratio: 1;
       }
 
